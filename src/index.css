@@ -1,13 +1,8 @@
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-    width: 100%;
-    overflow-x: hidden;
+    font-family: Optimistic Text, -apple-system, ui-sans-serif, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 }
- 
+
+::selection {
+    color: #d5d5d5;
+    background-color: blue
+}
