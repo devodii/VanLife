@@ -1,13 +1,20 @@
-import React from 'react'
-import { Outlet  } from 'react-router-dom'
-import HostLinks from '../../Components/HostLayout'
+import React, { useRef } from "react";
+import { Outlet } from "react-router-dom";
+import HostLinks from "../../Components/HostLayout";
+import styled from "styled-components";
+
 const Dashboard = () => {
+   return (
+      <Container>
+         <h2>Dashboard</h2>
+         <abbr title="Emmanuel odii">EO</abbr>
+      </Container>
+   );
+};
 
-  return (
-    <div>
-      <h2>Dashboard</h2>
-    </div>
-  )
-}
-
-export default Dashboard
+const Container = styled.div`
+   abbr[title] {
+      text-decoration: none;
+   }
+`;
+export default Dashboard;

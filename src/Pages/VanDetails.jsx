@@ -1,32 +1,42 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import {
+   useParams,
+   Link,
+   useLocation,
+   useNavigate,
+   useLoaderData,
+} from "react-router-dom";
+import { getVans } from "../api";
 
+export function vanDetailLoader({ params }) {
+   console.log({ params });
+   return getVans(params.id);
+}
 const VanDetails = () => {
-   const params = useParams();
-   const [data, setData] = useState(null);
+   const location = useLocation();
+   const navigate = useNavigate();
 
-   useEffect(() => {
-      fetch(`http://localhost:3005/vans/${params.id}`)
-         .then((res) => res.json())
-         .then(setData)
-         .catch((err) => console.log(err));
-   }, [params]);
-   console.log(data);
+   const data = useLoaderData();
 
+   const previousUrl = location.state?.search || "";
+   const prevName = location.state.name || "all";
    return (
       <div>
-         Van Details
-         {data ? (
-            <div>
-               <img src={data.photo} alt="" height={250} />
-                   <h1>{data.name}</h1>
-                   <p>${data.price} / day</p>
-                   <p>{data.description}</p>
-                   <button>Rent this van</button>
-            </div>
-         ) : (
-            <p>Loading...</p>
-         )}
+         <br />
+         <Link
+            to={`..${previousUrl}`}
+            relative="path"
+         >{`Back to ${prevName} vans`}</Link>
+         <br />
+         <br />
+
+         <div>
+            <img src={data.photo} alt="" height={250} />
+            <h1>{data.name}</h1>
+            <p>${data.price} / day</p>
+            <p>{data.description}</p>
+            <button onClick={() => navigate(-1)}>Rent this van</button>
+         </div>
       </div>
    );
 };
