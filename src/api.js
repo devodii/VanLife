@@ -1,6 +1,7 @@
 import { redirect } from "react-router-dom";
 
 export async function getVans(id) {
+   await sleep(1000)
    const url = id
       ? `http://localhost:3005/vans/${id}`
       : "http://localhost:3005/vans";

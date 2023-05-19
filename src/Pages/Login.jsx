@@ -29,7 +29,6 @@ export async function loginAction({ request }) {
 }
 
 const Login = () => {
-   const [error, setError] = React.useState(null);
    const errorMessage = useActionData();
    const { state } = useNavigation();
    const data = useLoaderData();
@@ -37,7 +36,6 @@ const Login = () => {
    return (
       <Container>
          <h2>Sign into your account</h2>
-         {error && <h4>{error?.message}</h4>}
          {data && <p>{data}</p>}
          {errorMessage && <h4>{errorMessage}</h4>}
          <Form method="post" replace>
